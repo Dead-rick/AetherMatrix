@@ -1,4 +1,3 @@
-# AetherMatrix
 # Introduction:
 AetherMatrix is a program is efficiently organize, visualize, and work with Secondary Array (or 2D Array)
 
@@ -945,7 +944,7 @@ For reference, we will be using these two AetherMatrix.
 ```
 
 ## Bool value
-`bool(<DM-Object>)` will return `True` if all the elements are `True`, or having the value `True`, else return `False`.
+`bool(<AM-Object>)` will return `True` if all the elements are `True`, or having the value `True`, else return `False`.
 
 ```
 >>> Obj = AetherMatrix([[True, True],[True, True]])
@@ -1050,7 +1049,7 @@ In this case the axis is set to 0
 * If you have axis 1, then the appending object must have same `amplitude` with the one you're appending with.
 * If you have axis 0, then the appending object must have same `altitude`, with the one you're appending with.
 ### Insert
-Syntax: `<DM-Object>.insert(<Index>, <Other DM-Object>)`
+Syntax: `<AM-Object>.insert(<Index>, <Other AM-Object>)`
 
 **On axis 1**
 ```
