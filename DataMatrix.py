@@ -64,14 +64,14 @@ def Comp_Operators(instance, other_instance, opr):
         for i in range(instance.alt):
             Temp = []
             for j in range(instance.amp):
-                if isinstance(other_instance, DataMatrix):
+                if isinstance(other_instance, AetherMatrix):
                     if other_instance.dim != instance.dim: raise ValueError(f'[Error #1] To opertions to carry, both the Object should have same dimension, but rather different here; {instance.dim} and {other_instance.dim}')
                     Temp.append(OPERATORS[opr](instance.array[i][j], other_instance.array[i][j]))
                 else: Temp.append(OPERATORS[opr](instance.array[i][j],other_instance))
             Returned.append(Temp)    
         return Returned
 
-class DataMatrix:
+class AetherMatrix:
     def __init__(self, array):
          if Null_Array_Validation(array):
             self.array = [[array]]
@@ -128,14 +128,14 @@ class DataMatrix:
             return self.amp
         
     def copy(self):
-        return DataMatrix(deepcopy(self.array))
+        return AetherMatrix(deepcopy(self.array))
     
     @property
     def transpose(self):
-        return DataMatrix([[x[i] for x in self.array] for i in range(len(self.array[0]))])
+        return AetherMatrix([[x[i] for x in self.array] for i in range(len(self.array[0]))])
     
     def __repr__(self):
-        return f"DataMatrix({self.dim})"
+        return f"AetherMatrix({self.dim})"
 
     def __str__(self):
         if not self.index and self.headers == None:
@@ -158,22 +158,22 @@ class DataMatrix:
                 if isinstance(Row_Index, slice): Slice_Row = Slicing_Adjust(Row_Index, self.alt)
                 if isinstance(Col_Index, slice): Slice_Col = Slicing_Adjust(Col_Index, self.amp)
                 if isinstance(Row_Index, int) and isinstance(Col_Index, int):
-                    return DataMatrix(self.array[Int_Row][Int_Col])
+                    return AetherMatrix(self.array[Int_Row][Int_Col])
                 elif isinstance(Row_Index, slice) and isinstance(Col_Index, int):
-                    return DataMatrix([[i[Int_Col]] for i in self.array[Slice_Row]])
+                    return AetherMatrix([[i[Int_Col]] for i in self.array[Slice_Row]])
                 elif isinstance(Row_Index, int) and isinstance(Col_Index, slice):
-                    return DataMatrix(self.array[Int_Row][Slice_Col])
+                    return AetherMatrix(self.array[Int_Row][Slice_Col])
                 elif isinstance(Row_Index, slice) and isinstance(Col_Index, slice):
-                    return DataMatrix([i[Slice_Col] for i in self.array[Slice_Row]])
+                    return AetherMatrix([i[Slice_Col] for i in self.array[Slice_Row]])
             elif isinstance(index, int):
-                return DataMatrix(self.array[Integral_Adjust(index)])
+                return AetherMatrix(self.array[Integral_Adjust(index)])
             elif isinstance(index, slice):
-                return DataMatrix(self.array[Slicing_Adjust(index, wrt=self.alt)])
+                return AetherMatrix(self.array[Slicing_Adjust(index, wrt=self.alt)])
         except IndexError:Error_occured=True
         if Error_occured: raise IndexError(f'[Error #7] The provided is index is either out of range or illegal for the given array; provided index:{index}.')
 
     def __setitem__(self, index, data):
-        if isinstance(data, DataMatrix):val = data.array
+        if isinstance(data, AetherMatrix):val = data.array
         else: val = data
 
         Error_occured = False
@@ -265,25 +265,25 @@ class DataMatrix:
         self.amp = len(self.array[0])
         self.alt = len(self.array)
     
-    def __add__(self, Val):return DataMatrix(Comp_Operators(self, Val, '+'))
-    def __mul__(self, Val):return DataMatrix(Comp_Operators(self, Val, '*'))
-    def __truediv__(self, Val): return DataMatrix(Comp_Operators(self, Val, '/'))
-    def __sub__(self, Val): return DataMatrix(Comp_Operators(self, Val, '-'))
-    def __floordiv__(self, Val): return DataMatrix(Comp_Operators(self, Val, '//'))
-    def __mod__(self, Val): return DataMatrix(Comp_Operators(self, Val, '%'))
-    def __eq__(self, Val): return DataMatrix(Comp_Operators(self, Val, '=='))
-    def __gt__(self, Val): return DataMatrix(Comp_Operators(self, Val, '>'))
-    def __lt__(self, Val): return DataMatrix(Comp_Operators(self, Val, '<'))
-    def __le__(self, Val): return DataMatrix(Comp_Operators(self, Val, '<='))
-    def __ge__(self, Val): return DataMatrix(Comp_Operators(self, Val, '>='))
-    def __ne__(self, Val): return DataMatrix(Comp_Operators(self, Val, '!='))
+    def __add__(self, Val):return AetherMatrix(Comp_Operators(self, Val, '+'))
+    def __mul__(self, Val):return AetherMatrix(Comp_Operators(self, Val, '*'))
+    def __truediv__(self, Val): return AetherMatrix(Comp_Operators(self, Val, '/'))
+    def __sub__(self, Val): return AetherMatrix(Comp_Operators(self, Val, '-'))
+    def __floordiv__(self, Val): return AetherMatrix(Comp_Operators(self, Val, '//'))
+    def __mod__(self, Val): return AetherMatrix(Comp_Operators(self, Val, '%'))
+    def __eq__(self, Val): return AetherMatrix(Comp_Operators(self, Val, '=='))
+    def __gt__(self, Val): return AetherMatrix(Comp_Operators(self, Val, '>'))
+    def __lt__(self, Val): return AetherMatrix(Comp_Operators(self, Val, '<'))
+    def __le__(self, Val): return AetherMatrix(Comp_Operators(self, Val, '<='))
+    def __ge__(self, Val): return AetherMatrix(Comp_Operators(self, Val, '>='))
+    def __ne__(self, Val): return AetherMatrix(Comp_Operators(self, Val, '!='))
     
     def __iter__(self):
         if self.axis == 1:return iter(self.array)
         else:return iter(self.transpose.__raw__)
 
     def apply(self, func):
-        return DataMatrix([[func(j) for j in i] for i in self.array])
+        return AetherMatrix([[func(j) for j in i] for i in self.array])
     
     def __bool__(self):
         Bool_array = [[bool(j) for j in i] for i in self.array]
@@ -291,7 +291,7 @@ class DataMatrix:
         return Bool_array == Comp_Bool_array
     
     def append(self, val):
-        if not isinstance(val, DataMatrix):raise TypeError('[Error #11] The value you going to append but be also a DataMatrix Object.')
+        if not isinstance(val, AetherMatrix):raise TypeError('[Error #11] The value you going to append but be also a AetherMatrix Object.')
         if self.axis == 1:
             if self.amp != val.amp:raise ValueError('[Error #12] The amplitude of the main array and the ampliude of appending array is not equal')
             self.array += val.array
@@ -304,7 +304,7 @@ class DataMatrix:
     def insert(self,index, val):
         Error_Occured = False
         try:
-            if not isinstance(val, DataMatrix): raise TypeError('[Error #14] The value you going to append but be also a DataMatrix Object.')
+            if not isinstance(val, AetherMatrix): raise TypeError('[Error #14] The value you going to append but be also a AetherMatrix Object.')
             if self.axis == 1:
                 if val.amp != self.amp:raise ValueError('[Error #15] The amplitude of the main array and the ampliude of appending array is not equal')
                 for j in val.array[::-1]:self.array.insert(index-1, j)
