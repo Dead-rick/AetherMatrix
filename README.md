@@ -1,6 +1,6 @@
-# DataMatrix
+# AetherMatrix
 # Introduction:
-Data Matrix is a program is efficiently organize, visualize, and work with Secondary Array (or 2D Array)
+AetherMatrix is a program is efficiently organize, visualize, and work with Secondary Array (or 2D Array)
 
 This is completely written in [python](https://www.python.org/downloads/) , with custom made exceptions to guide through the errors made.
 
@@ -8,17 +8,17 @@ This script run most importantly on [tabulate](https://pypi.org/project/tabulate
 can be installed by:
 `pip install tabulate`
 
-# Working with DataMatrix:
-## Initialization of a DataMatrix
+# Working with AetherMatrix:
+## Initialization of a AetherMatrix
 
-A DataMatrix can be created in the following ways:
+A AetherMatrix can be created in the following ways:
 * By a scalar value
 * By a 1D array (*List*)
 * By a 2D array.
 
 **By an scalar value:**
 ```
->>> Obj = DataMatrix(1)
+>>> Obj = AetherMatrix(1)
 >>> print(Obj)
 ╭───╮
 │ 1 │
@@ -26,7 +26,7 @@ A DataMatrix can be created in the following ways:
 ```
 **By a 1D array**
 ```
->>> Obj = DataMatrix([1,2,3,4])
+>>> Obj = AetherMatrix([1,2,3,4])
 >>> print(Obj)
 ╭───┬───┬───┬───╮
 │ 1 │ 2 │ 3 │ 4 │
@@ -34,7 +34,7 @@ A DataMatrix can be created in the following ways:
 ```
 **By a 2D array**
 ```
->>> Obj = DataMatrix([[1,2,3,4],[5,6,7,8]])
+>>> Obj = AetherMatrix([[1,2,3,4],[5,6,7,8]])
 >>> print(Obj)
 ╭───┬───┬───┬───╮
 │ 1 │ 2 │ 3 │ 4 │
@@ -45,11 +45,11 @@ A DataMatrix can be created in the following ways:
 
 ## Amplitudes and Altitudes:
 
-- Amplitude is the number of columns in the DataMatrix
-- Altitude is the number of rows in the DataMatrix
+- Amplitude is the number of columns in the AetherMatrix
+- Altitude is the number of rows in the AetherMatrix
 It can retrieved by:  
 ```
->>> Obj = DataMatrix([[1,2,3],[4,5,6]])
+>>> Obj = AetherMatrix([[1,2,3],[4,5,6]])
 >>> Obj.amp
 3
 >>> Obj.alt
@@ -58,7 +58,7 @@ It can retrieved by:
 '2x3'
 
 ```
-The `.dim` attribute is the dimension of your DataMatrix Object.
+The `.dim` attribute is the dimension of your AetherMatrix Object.
 
 ## Attributes
 There are 4 attributes you can change.
@@ -110,7 +110,7 @@ The headers are list which always stays on top of the table.
 The header list must be of the length of columns of the 2D array, else will raise an error.
 To assign a header.
 ```
->>> Obj = DataMatrix([['July','09-01-2001'],['Marvin','18-07-2001']])
+>>> Obj = AetherMatrix([['July','09-01-2001'],['Marvin','18-07-2001']])
 >>> Obj.headers = ['Name', 'DOB']
 >>> print(Obj)
 ╭────────┬────────────╮
@@ -129,7 +129,7 @@ Index is accept only Boolean values (`True` or `False`).
 Any other value will raise an error.
 For example:
 ```
->>> Obj = DataMatrix([['July','09-01-2001'],['Marvin','18-07-2001']])
+>>> Obj = AetherMatrix([['July','09-01-2001'],['Marvin','18-07-2001']])
 >>> print(Obj)
 ╭────────┬────────────╮
 │ July   │ 09-01-2001 │
@@ -160,7 +160,7 @@ This is will be useful later on. Any other value other `0 or 1`, will raise an E
 ### Also;
 * With Headers and with Index:
 ```
->>> Obj = DataMatrix([['July','09-01-2001'],['Marvin','18-07-2001']])
+>>> Obj = AetherMatrix([['July','09-01-2001'],['Marvin','18-07-2001']])
 >>> Obj.headers = ['Name','Dob']
 >>> Obj.index = True
 >>> print(Obj)
@@ -214,7 +214,7 @@ This is will be useful later on. Any other value other `0 or 1`, will raise an E
 
 ## Accessing, Setting and deleting.
 ### Skeletal System of Row and Column
-There are some obvious things you should know before using the DataMatrix Module;
+There are some obvious things you should know before using the AetherMatrix Module;
 In a 2D list can be organized like this; Let us call this assignment of elements as Skeletal system.
 ```
 [
@@ -225,9 +225,9 @@ In a 2D list can be organized like this; Let us call this assignment of elements
 ```
 This is needed while setting of elements.
 
-For reference we will be having this DataMatrix;
+For reference we will be having this AetherMatrix;
 ```
->>> Obj = DataMatrix([['Q','R','S','T'],['U','V','W','X'],['Y','Z','A','B']])
+>>> Obj = AetherMatrix([['Q','R','S','T'],['U','V','W','X'],['Y','Z','A','B']])
 >>> print(Obj)
 ╭───┬───┬───┬───╮
 │ Q │ R │ S │ T │
@@ -560,10 +560,10 @@ Syntax: `<Object>[<Row Index>,<Column Index>] = Val`
 ╰───┴───┴───┴───╯
 ```
 
-#### Setting with DataMatrix Object
-The setter value need not to be a list but can also be DataMatrix Object, example:
+#### Setting with AetherMatrix Object
+The setter value need not to be a list but can also be AetherMatrix Object, example:
 ```
->>> Obj = DataMatrix([[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]])
+>>> Obj = AetherMatrix([[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]])
 >>> print(Obj)
 ╭────┬────┬────┬────╮
 │  1 │  2 │  3 │  4 │
@@ -574,7 +574,7 @@ The setter value need not to be a list but can also be DataMatrix Object, exampl
 ├────┼────┼────┼────┤
 │ 13 │ 14 │ 15 │ 16 │
 ╰────┴────┴────┴────╯
->>> Obj2 = DataMatrix([['Q','R','S','T']])
+>>> Obj2 = AetherMatrix([['Q','R','S','T']])
 >>> Obj[1] = Obj2
 >>> print(Obj)
 ╭────┬────┬────┬────╮
@@ -588,7 +588,7 @@ The setter value need not to be a list but can also be DataMatrix Object, exampl
 ╰────┴────┴────┴────╯
 ```
 ### Deleting element
-You can remove a segment from the DataMatrix using,
+You can remove a segment from the AetherMatrix using,
 #### Deleting a Row
 Syntax: `del <Object>[<Row Index>]`
 ```
@@ -692,15 +692,15 @@ Syntax: `del <Object>[<Row Index>,<Column Index>]`
 
 
 ## Arithmetic Operations
-Arithmetic Operation carried out by two DataMatrix Object should be of same dimensions.
-Arithmetic Operation can be also carried out by a DataMatrix Object and a scalar value.
+Arithmetic Operation carried out by two AetherMatrix Object should be of same dimensions.
+Arithmetic Operation can be also carried out by a AetherMatrix Object and a scalar value.
 In that case, the scalar will applied to every element of the object.
 
-For reference, we will be using these two DataMatrix. 
+For reference, we will be using these two AetherMatrix. 
 
 ```
->>> Obj1 = DataMatrix([[1,2,3],[4,5,6],[7,8,9]])
->>> Obj2 = DataMatrix([[15,12,14],[19,20,89],[23,6,90]])
+>>> Obj1 = AetherMatrix([[1,2,3],[4,5,6],[7,8,9]])
+>>> Obj2 = AetherMatrix([[15,12,14],[19,20,89],[23,6,90]])
 ```
 ### Addition
 ```
@@ -819,15 +819,15 @@ For reference, we will be using these two DataMatrix.
 ```
 
 ## Comparison Operations
-Comparison Operation carried out by two DataMatrix Object should be of same dimensions.
-Comparison Operation can be also carried out by a DataMatrix Object and a scalar value.
+Comparison Operation carried out by two AetherMatrix Object should be of same dimensions.
+Comparison Operation can be also carried out by a AetherMatrix Object and a scalar value.
 In that case, the scalar will applied to every element of the object.
 
-For reference, we will be using these two DataMatrix. 
+For reference, we will be using these two AetherMatrix. 
 
 ```
->>> Obj1 = DataMatrix([[1,2,3],[4,5,6],[7,8,9]])
->>> Obj2 = DataMatrix([[15,12,14],[19,5,89],[23,6,90]])
+>>> Obj1 = AetherMatrix([[1,2,3],[4,5,6],[7,8,9]])
+>>> Obj2 = AetherMatrix([[15,12,14],[19,5,89],[23,6,90]])
 ```
 ### Equality
 ```
@@ -948,10 +948,10 @@ For reference, we will be using these two DataMatrix.
 `bool(<DM-Object>)` will return `True` if all the elements are `True`, or having the value `True`, else return `False`.
 
 ```
->>> Obj = DataMatrix([[True, True],[True, True]])
+>>> Obj = AetherMatrix([[True, True],[True, True]])
 >>> bool(Obj)
 True
->>> Obj = DataMatrix([[True, False],[True, True]])
+>>> Obj = AetherMatrix([[True, False],[True, True]])
 >>> bool(Obj)
 False
 ```
@@ -959,7 +959,7 @@ False
 Here is the axis part comes in,
 The length attribute differs on the axis, that is.
 ```
->>> Obj = DataMatrix([[1,2,3],[4,5,6]])
+>>> Obj = AetherMatrix([[1,2,3],[4,5,6]])
 >>> print(Obj)
 ╭───┬───┬───╮
 │ 1 │ 2 │ 3 │
@@ -981,7 +981,7 @@ That is
 ## Transpose
 It is just transposing the grid.
 ```
->>> Obj = DataMatrix([[1,2,3],[4,5,6]])
+>>> Obj = AetherMatrix([[1,2,3],[4,5,6]])
 >>> print(Obj.transpose)
 ╭───┬───╮
 │ 1 │ 4 │
@@ -998,9 +998,9 @@ It is just transposing the grid.
 ╰───┴───┴───╯
 ```
 ## Applying functions
-You can apply a specific function to all the elements in the DataMatrix, as example:
+You can apply a specific function to all the elements in the AetherMatrix, as example:
 ```
->>> Obj = DataMatrix([[1,2,3],[4,5,6]])
+>>> Obj = AetherMatrix([[1,2,3],[4,5,6]])
 >>> from math import sin
 >>> print(Obj.apply(sin))
 ╭───────────┬───────────┬───────────╮
@@ -1013,11 +1013,11 @@ You can apply a specific function to all the elements in the DataMatrix, as exam
 
 ## Append, Insert
 ### Append
-Append is used to add a DataMatrix to a another DataMatrix.
+Append is used to add a AetherMatrix to a another AetherMatrix.
 In this case the axis is set to 1
 ```
->>> Obj1 = DataMatrix([[1,2,3],[4,5,6]])
->>> Obj2 = DataMatrix([[2,3,4],[5,6,7]])
+>>> Obj1 = AetherMatrix([[1,2,3],[4,5,6]])
+>>> Obj2 = AetherMatrix([[2,3,4],[5,6,7]])
 >>> Obj1.axis = 1
 >>> Obj1.append(Obj2)
 >>> print(Obj1)
@@ -1034,8 +1034,8 @@ In this case the axis is set to 1
 
 In this case the axis is set to 0
 ```
->>> Obj1 = DataMatrix([[1,2,3],[4,5,6]])
->>> Obj2 = DataMatrix([[2,3,4],[5,6,7]])
+>>> Obj1 = AetherMatrix([[1,2,3],[4,5,6]])
+>>> Obj2 = AetherMatrix([[2,3,4],[5,6,7]])
 >>> Obj1.axis = 0
 >>> Obj1.append(Obj2)
 >>> print(Obj1)
@@ -1054,8 +1054,8 @@ Syntax: `<DM-Object>.insert(<Index>, <Other DM-Object>)`
 
 **On axis 1**
 ```
->>> Obj1 = DataMatrix([[1,2],[3,4]])
->>> Obj2 = DataMatrix([[6,7],[8,9]])
+>>> Obj1 = AetherMatrix([[1,2],[3,4]])
+>>> Obj2 = AetherMatrix([[6,7],[8,9]])
 >>> Obj1.insert(2,Obj2)
 >>> print(Obj1)
 ╭───┬───╮
@@ -1071,8 +1071,8 @@ Syntax: `<DM-Object>.insert(<Index>, <Other DM-Object>)`
 
 **On axis 0**
 ```
->>> Obj1 = DataMatrix([[1,2],[3,4]])
->>> Obj2 = DataMatrix([[6,7],[8,9]])
+>>> Obj1 = AetherMatrix([[1,2],[3,4]])
+>>> Obj2 = AetherMatrix([[6,7],[8,9]])
 >>> Obj1.axis = 0
 >>> Obj1.insert(2, Obj2)
 >>> print(Obj1)
@@ -1084,16 +1084,16 @@ Syntax: `<DM-Object>.insert(<Index>, <Other DM-Object>)`
 ```
 
 ## Representation
-The DataMatrix Is represented as
+The AetherMatrix Is represented as
 ```
->>> Obj = DataMatrix([[1,2],[3,4]])
+>>> Obj = AetherMatrix([[1,2],[3,4]])
 >>> Obj
-DataMatrix(2x2)
+AetherMatrix(2x2)
 ```
 ## Raw
 `__raw__` method will return you the raw 2D array
 ```
->>> Obj = DataMatrix([[1,2],[3,4]])
+>>> Obj = AetherMatrix([[1,2],[3,4]])
 >>> Obj.__raw__
 [[1, 2], [3, 4]]
 ```
@@ -1101,21 +1101,21 @@ DataMatrix(2x2)
 # Errors
 
 ## Error #1
-When you Add, subtract, or do any arithmetic or comparison operation between any two DataMatrix object, both the objects have to be in same dimension, or else will raise error:
+When you Add, subtract, or do any arithmetic or comparison operation between any two AetherMatrix object, both the objects have to be in same dimension, or else will raise error:
 Let us say we add Objects of dimension `3x4` and `1x4`
 Then this error will be raised, flagged as `Error #1`
 
 ```
->>> Obj1 = DataMatrix([[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+>>> Obj1 = AetherMatrix([[1,2,3,4],[5,6,7,8],[9,10,11,12]]
 ... )
->>> Obj2 = DataMatrix([[1,2,3,4]])
+>>> Obj2 = AetherMatrix([[1,2,3,4]])
 >>> print(Obj1+Obj2)
 Traceback (most recent call last):
   File "<python-input-14>", line 1, in <module>
     print(Obj1+Obj2)
           ~~~~^~~~~
   File "/mnt/d/PYDB/Pydb-core/pydb_.py", line 269, in __add__
-    def __add__(self, Val):return DataMatrix(Comp_Operators(self, Val, '+'))
+    def __add__(self, Val):return AetherMatrix(Comp_Operators(self, Val, '+'))
                                              ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
   File "/mnt/d/PYDB/Pydb-core/pydb_.py", line 69, in Comp_Operators
     if other_instance.dim != instance.dim: raise ValueError(f'[Error #1] To opertions to carry, both the Object should have same dimension, but rather different here; {instance.dim} and {other_instance.dim}')
@@ -1123,12 +1123,12 @@ Traceback (most recent call last):
 ValueError: [Error #1] To opertions to carry, both the Object should have same dimension, but rather different here; 3x4 and 1x4
 ```
 ## Error #2
-When you try to convert a illegal array to a DataMatrix, you will get this error
+When you try to convert a illegal array to a AetherMatrix, you will get this error
 ```
->>> Obj1 = DataMatrix([[1,2,3],[5,6],[7]])
+>>> Obj1 = AetherMatrix([[1,2,3],[5,6],[7]])
 Traceback (most recent call last):
   File "<python-input-1>", line 1, in <module>
-    Obj1 = DataMatrix([[1,2,3],[5,6],[7]])
+    Obj1 = AetherMatrix([[1,2,3],[5,6],[7]])
   File "/mnt/d/PYDB/Pydb-core/pydb_.py", line 84, in __init__
     raise ValueError('[Error #2] Illegally nested array.')
 ValueError: [Error #2] Illegally nested array.
@@ -1189,7 +1189,7 @@ ValueError: [Error 6] The axis must be either 1 or 0; given as 5.
 ## Error #7
 This nothing but index error when trying to get an item
 ```
->>> Obj1 = DataMatrix([[1,2],[3,4]])
+>>> Obj1 = AetherMatrix([[1,2],[3,4]])
 >>> Obj1[3]
 Traceback (most recent call last):
   File "<python-input-2>", line 1, in <module>
@@ -1204,7 +1204,7 @@ IndexError: [Error #7] The provided is index is either out of range or illegal f
 ## Error #8
 This error is raised when your setter value is in illegal dimensions
 ```
->>> Obj1 = DataMatrix([[1,2],[3,4]])
+>>> Obj1 = AetherMatrix([[1,2],[3,4]])
 >>> Obj1[2] = [[1,2,3]]
 Traceback (most recent call last):
   File "<python-input-2>", line 1, in <module>
@@ -1245,9 +1245,9 @@ IndexError: [Error #10] The provided is index is either out of range or illegal 
 ```
 
 ## Error #11
-This error is raised when appending a non DataMatrix Object to a DataMatrix Object
+This error is raised when appending a non AetherMatrix Object to a AetherMatrix Object
 ```
->>> Obj1 = DataMatrix([[1,2],[3,4]])
+>>> Obj1 = AetherMatrix([[1,2],[3,4]])
 >>> Obj2 = [[5,6],[7,8]]
 >>> Obj1.append(Obj2)
 Traceback (most recent call last):
@@ -1255,16 +1255,16 @@ Traceback (most recent call last):
     Obj1.append(Obj2)
     ~~~~~~~~~~~^^^^^^
   File "/mnt/d/PYDB/Pydb-core/pydb_.py", line 295, in append
-    if not isinstance(val, DataMatrix):raise TypeError('[Error #11] The value you going to append but be also a DataMatrix Object.')
+    if not isinstance(val, AetherMatrix):raise TypeError('[Error #11] The value you going to append but be also a AetherMatrix Object.')
                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: [Error #11] The value you going to append but be also a DataMatrix Object.
+TypeError: [Error #11] The value you going to append but be also a AetherMatrix Object.
 ```
 
 ## Error #12
-This error is raised when the amplitude is not matched with the DataMatrix you're appending with while the axis is equal to 1.
+This error is raised when the amplitude is not matched with the AetherMatrix you're appending with while the axis is equal to 1.
 ```
->>> Obj1 = DataMatrix([[1,2],[3,4]])
->>> Obj2 = DataMatrix([[5,6,'q'],[7,8,'r']])
+>>> Obj1 = AetherMatrix([[1,2],[3,4]])
+>>> Obj2 = AetherMatrix([[5,6,'q'],[7,8,'r']])
 >>> Obj1.axis = 1
 >>> Obj1.append(Obj2)
 Traceback (most recent call last):
@@ -1278,10 +1278,10 @@ ValueError: [Error #12] The amplitude of the main array and the ampliude of appe
 ```
 
 ## Error #13
-This error is raised when the altitude is not matched with the DataMatrix you're appending with while the axis is equal to 0,
+This error is raised when the altitude is not matched with the AetherMatrix you're appending with while the axis is equal to 0,
 ```
->>> Obj1 = DataMatrix([[1,2],[3,4]])
->>> Obj2 = DataMatrix([[5,6],[7,8],[9,10]])
+>>> Obj1 = AetherMatrix([[1,2],[3,4]])
+>>> Obj2 = AetherMatrix([[5,6],[7,8],[9,10]])
 >>> Obj1.axis = 0
 >>> Obj1.append(Obj2)
 Traceback (most recent call last):
@@ -1308,5 +1308,5 @@ While inserting, if the index is out of range or illegal for the array, this err
 
 # Finally.
 
-If you have read this entire document, thank you very much. Also, this DataMatrix program is still in development and want to achieve even more complex situation, please be patient until that. Your issues and your recommendation are really welcomed. Thank you.
+If you have read this entire document, thank you very much. Also, this AetherMatrix program is still in development and want to achieve even more complex situation, please be patient until that. Your issues and your recommendation are really welcomed. Thank you.
 
