@@ -1,4 +1,3 @@
-from pydbErrors import *
 from tabulate import tabulate as Fnx
 import operator
 from math import *
